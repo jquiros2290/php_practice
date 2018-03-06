@@ -27,5 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function status(){
+        return $this->hasOne('App\Status', 'id', 'status_id');
+    }
     
 }

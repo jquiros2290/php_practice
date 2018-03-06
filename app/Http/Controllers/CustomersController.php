@@ -16,8 +16,11 @@ class CustomersController extends Controller
     public function index()
     {
         $users = User::all();
-        $statuses = Status::all();
-        return view('customers.welcome', compact('users', 'statuses'));
+
+
+
+
+        return view('customers.welcome', compact('users'));
     }
 
     /**

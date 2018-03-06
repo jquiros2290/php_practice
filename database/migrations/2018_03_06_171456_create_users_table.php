@@ -18,8 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('status_id')->default(1);
+            $table->integer('status_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+
+            $table->foreign('status_id')->references('id')->on('statuses');
+
         });
     }
 

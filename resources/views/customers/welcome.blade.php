@@ -18,7 +18,7 @@
                         <tr>
                                 <td><a href="/customers/{{ $user->id }}">{{ $user->name }}</a></td>
                                 <td>{{ $user->email }}</a></td>
-                                <td>{{ $statuses[$user->status_id]->status }}</a></td>
+                                <td>{{ $user->status->status}}</a></td>
                         </tr>
                             @endforeach
                     </table>
