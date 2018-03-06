@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Status;
 
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class CustomersController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('customers.welcome', compact('users'));
+        $statuses = Status::all();
+        return view('customers.welcome', compact('users', 'statuses'));
     }
 
     /**
@@ -47,7 +49,8 @@ class CustomersController extends Controller
      */
     public function show(User $user)
     {
-        return view('customers.show', compact('user'));
+        $statuses = Status::all();
+        return view('customers.show', compact('user', 'statuses'));
         
     }
 
@@ -73,7 +76,7 @@ class CustomersController extends Controller
     {
         // dd(request()->all());
         $user = User::find($id);
-        $user->status = request('status');
+        $user->status_id = request('status');
         $user->save();
 
         return redirect('/');
