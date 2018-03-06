@@ -52,8 +52,9 @@ class CustomersController extends Controller
      */
     public function show(User $user)
     {
-        $statuses = Status::all();
-        return view('customers.show', compact('user', 'statuses'));
+
+
+        return view('customers.show', compact('user'));
         
     }
 

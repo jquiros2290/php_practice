@@ -12,11 +12,19 @@
 				<input name="_method" type="hidden" value="PATCH">
 			    <label for="status">Current Status: </label>
 			    <select name="status" id="status">
-			    	<option selected hidden value="{{$user->status_id}}">{{ $statuses[$user->status_id]->status }}</option>
-					<option value="0">Active</option>
-					<option value="1">Canceled</option>
-					<option value="2">Suspended</option>
-					<option value="3">Premium</option>
+			    	<option selected value="{{$user->status_id}}">{{ $user->status->status }}</option>
+			    	@if ($user->status->status != 'Active')
+					<option value="1">Active</option>
+					@endif
+			    	@if ($user->status->status != 'Canceled')
+					<option value="2">Canceled</option>
+					@endif
+			    	@if ($user->status->status != 'Suspended')
+					<option value="3">Suspended</option>
+					@endif
+			    	@if ($user->status->status != 'Premium')
+					<option value="4">Premium</option>
+					@endif
 				</select>
 			</div>
 			<div class="form-group">
