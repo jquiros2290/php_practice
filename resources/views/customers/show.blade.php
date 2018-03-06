@@ -10,22 +10,37 @@
 			{{ csrf_field() }}
 			<div class="form-group">
 				<input name="_method" type="hidden" value="PATCH">
-			    <label for="status">Current Status: </label>
+
+				<label for="status">Current Status: </label>
 			    <select name="status" id="status">
-			    	<option selected value="{{$user->status_id}}">{{ $user->status->status }}</option>
-			    	@if ($user->status->status != 'Active')
-					<option value="1">Active</option>
-					@endif
-			    	@if ($user->status->status != 'Canceled')
-					<option value="2">Canceled</option>
-					@endif
-			    	@if ($user->status->status != 'Suspended')
-					<option value="3">Suspended</option>
-					@endif
-			    	@if ($user->status->status != 'Premium')
-					<option value="4">Premium</option>
-					@endif
+
+					<!-- grab all the different status
+					//if the id matches the users' status id
+					//then I select them, otherwise I just list it -->
+
+
+					@foreach($banana as $status)
+						@if($status->id==$user->status->id)
+							<option value="{{$status->id}}" selected>{{$status->status}}</option>
+						@else
+							<option value="{{$status->id}}">{{$status->status}}</option>
+						@endif
+					@endforeach
+
+					<!--
+
+						//name of the object to be rendered
+						//caption state
+						//$array
+						//ID
+
+					A::B("the_name","select something", $banana,$user->status->id)
+					-->
+
+
+
 				</select>
+
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Update</button>

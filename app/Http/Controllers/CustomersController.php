@@ -15,12 +15,9 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $data['users'] = User::all();
 
-
-
-
-        return view('customers.welcome', compact('users'));
+        return view('customers.welcome', $data);
     }
 
     /**
@@ -52,9 +49,12 @@ class CustomersController extends Controller
      */
     public function show(User $user)
     {
+        $banana= Status::all();
+
+        $dropdown=something();
 
 
-        return view('customers.show', compact('user'));
+        return view('customers.show', compact('user','banana','dropdown'));
         
     }
 
