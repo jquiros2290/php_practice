@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'CustomersController@index' );
-Route::patch('/customers/{id}', 'CustomersController@update');
+Route::post('/customers/{id}', 'CustomersController@update');
 Route::get('/customers/{user}', 'CustomersController@show');
 
 Route::get('/signup', 'EmailsController@create');

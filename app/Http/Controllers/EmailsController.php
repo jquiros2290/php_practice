@@ -1,9 +1,9 @@
- <?php
+<?php
 
 namespace App\Http\Controllers;
 
-use Mail;
 use Illuminate\Http\Request;
+use Mail;
 
 require '../vendor/autoload.php';
 use Illuminate\Mail\Mailer;

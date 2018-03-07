@@ -49,12 +49,10 @@ class CustomersController extends Controller
      */
     public function show(User $user)
     {
-        $banana= Status::all();
-
-        $dropdown=something();
+        $statuses= Status::all();
 
 
-        return view('customers.show', compact('user','banana','dropdown'));
+        return view('customers.show', compact('user','statuses','dropdown'));
         
     }
 
@@ -76,9 +74,8 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        // dd(request()->all());
         $user = User::find($id);
         $user->status_id = request('status');
         $user->save();
